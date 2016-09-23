@@ -1,0 +1,137 @@
+///////////		RESPONSIVE MIXINS	//////////////
+@mixin mobile {
+	@media screen and (max-width:640px) {
+		@content;
+	}
+}
+@mixin mobile-landscape {
+	@media screen and (min-device-width : 300px) and (max-device-width : 768px) and (orientation : landscape) {
+		@content;
+	}
+}
+
+@mixin tab {
+	@media screen and (max-width:1024px) {
+		@content;
+	}
+}
+@mixin tab-landscape {
+	@media only screen 	and (min-device-width : 768px) 	and (max-device-width : 1024px) and (orientation : landscape) {
+		@content;
+	}
+}
+@mixin xlarge {
+	@media screen and (min-width:1541px) {
+		@content;
+	}
+}
+@mixin snormal {
+	@media (min-width:1025px) and (max-width:14401px) {
+		@content;
+	}
+}
+
+/////////// VENDOR PRIFIX  /////////////////////
+
+@mixin vendor($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin middle() {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+@mixin h-middle() {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin v-middle() {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+////////////	Utility Mixins 		//////////////////
+
+@mixin grad($pri, $sec) {
+	background: $pri; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient($pri, $sec); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($pri, $sec); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($pri, $sec); /* For Firefox 3.6 to 15 */
+    background: linear-gradient($pri, $sec); /* Standard syntax */
+}
+
+@mixin nav(){
+	font-size: $nav-size;
+	font-family: $nav-font;
+	a {
+		color: $nav-color;
+	}
+}
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content};
+  :-moz-placeholder           {@content};
+  ::-moz-placeholder          {@content};
+  :-ms-input-placeholder      {@content}  
+}
+
+@mixin box ($bg:transparent, $p:15px, $r:0px, $b:transparent, $s:transparent) {
+	background-color: $bg;
+	padding: $p;
+	border-radius: $r;
+	border: 1px solid $b;
+	box-shadow: 2px 2px 2px $s, -2px 2px 2px $s;
+}
+
+@mixin round ($width, $border:transparent, $shadow:transparent) {
+	width: $width;
+	height: $width;
+	border-radius: $width / 2;
+	border: 1px solid $border;
+	box-shadow: 1px 1px 1px $shadow;
+
+}
+@mixin button ($color, $bg, $border:transparent, $shadow:transparent, $radius:0px) {
+	color: $color;
+	background-color: $bg;
+	border: 1px solid $border;
+	box-shadow: 1px 2px 2px $shadow;
+	border-radius: $radius;
+}
+
+
+///////////		Utility Classes 	///////////
+
+div.container, section.container {
+	width: $container-width;
+	margin: 25px auto;
+}
+section.wide {
+	width: $full-width;
+	margin: 25px 0;
+}
+.center {
+	text-align: center;
+}
+.v-container {
+	display: table;
+}
+.v-container .vac {
+	display: table-cell;
+	vertical-align: middle;
+
+}
+li {list-style: none;}
+ul.inline {
+	li {
+		display: inline-block;
+	}
+}
